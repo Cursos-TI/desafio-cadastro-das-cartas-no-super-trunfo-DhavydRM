@@ -31,7 +31,7 @@ int main() {
     printf("Nome da Cidade: ");
     fgets(nomeCidade1, 50, stdin); // Usei o fgets para poder capturar o "espaço" que o usuário pode digitar ao informar a cidade
     printf("População da cidade: ");
-    scanf("%i", &populacao1);
+    scanf("%lu", &populacao1);
     printf("Área da cidade em Km²: ");
     scanf("%f", &areaCidade1);
     printf("Digite o PIB(Produto Interno Bruto) da cidade: ");
@@ -50,7 +50,7 @@ int main() {
     printf("Nome da Cidade: "); // Não aceita cidades com acento: "São Paulo", no lugar, digite: "Sao Paulo"
     fgets(nomeCidade2, 50, stdin); 
     printf("População da cidade: ");
-    scanf("%i", &populacao2);
+    scanf("%lu", &populacao2);
     printf("Área da cidade em Km²: ");
     scanf("%f", &areaCidade2);
     printf("Digite o PIB(Produto Interno Bruto) da cidade: ");
@@ -68,8 +68,8 @@ int main() {
     pibPerCapita1 = (float) pibCidade1 / populacao1;
     pibPerCapita2 = (float) pibCidade2 / populacao2;
 
-    superPoder1 = (float)populacao1 + areaCidade1 + pibCidade1 + (float)pontosTuristicosC1 + pibPerCapita1 - densidadePopulacional1; 
-    superPoder2 = (float)populacao2 + areaCidade2 + pibCidade2 + (float)pontosTuristicosC2 + pibPerCapita2 - densidadePopulacional2; 
+    superPoder1 = (float)populacao1 + areaCidade1 + pibCidade1 + (float)pontosTuristicosC1 + pibPerCapita1 + (1.0 / densidadePopulacional1); 
+    superPoder2 = (float)populacao2 + areaCidade2 + pibCidade2 + (float)pontosTuristicosC2 + pibPerCapita2 - (1.0 / densidadePopulacional2); 
 
     // Finalizando cálculos
 
