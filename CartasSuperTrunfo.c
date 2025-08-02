@@ -11,12 +11,14 @@ int main() {
     char estado1, estado2; // Para facilitar, criei as variáveis juntas colocando apenas o número para diferenciar
     char codigoCarta1[10], codigoCarta2[10];
     char nomeCidade1[50], nomeCidade2[50];
-    int populacao1, populacao2;
+    unsigned long int populacao1, populacao2;
     float areaCidade1, areaCidade2;
     float pibCidade1, pibCidade2;
     int pontosTuristicosC1, pontosTuristicosC2; 
     float densidadePopulacional1, densidadePopulacional2;
     float pibPerCapita1, pibPerCapita2;
+    long double superPoder1, superPoder2;
+    int winPopulacao, winArea, winPib, winPontosT, winDensidade, winPibPerCapita, winSuperCarta;
 
     // Iniciando a solicitação dos dados de cada carta
 
@@ -66,6 +68,9 @@ int main() {
     pibPerCapita1 = (float) pibCidade1 / populacao1;
     pibPerCapita2 = (float) pibCidade2 / populacao2;
 
+    superPoder1 = (float)populacao1 + areaCidade1 + pibCidade1 + (float)pontosTuristicosC1 + pibPerCapita1 - densidadePopulacional1; 
+    superPoder2 = (float)populacao2 + areaCidade2 + pibCidade2 + (float)pontosTuristicosC2 + pibPerCapita2 - densidadePopulacional2; 
+
     // Finalizando cálculos
 
     printf("\n<======Exibindo as cartas cadastradas=======>\n\n"); // Linha para fazer uma separação entre os Inputs e Outputs
@@ -96,7 +101,39 @@ int main() {
     printf("Densidade Populacional: %.2f hab/km²\n", densidadePopulacional2);
     printf("PIB per Capita: %.2f reais\n", pibPerCapita2);
 
-    // Finalizada a exibição do dados
+    printf("\n<======SUPER TRUNFO!!!=======>\n\n");
+
+    // Finalizada a exibição do dados das cartas
+
+    // Comparações SUPER TRUNFO
+
+    winPopulacao = populacao1 > populacao2;
+    winArea = areaCidade1 > areaCidade2;
+    winPib = pibCidade1 > pibCidade2;
+    winPontosT = pontosTuristicosC1 > pontosTuristicosC2;
+    winDensidade = densidadePopulacional1 < densidadePopulacional2;
+    winPibPerCapita = pibPerCapita1 > pibPerCapita2;
+    winSuperCarta = superPoder1 > superPoder2;
+
+    // Fim comparações
+
+    // Iniciando o SUPER TRUNFO!!!
+
+    printf("Comparação das Cartas:\n");
+    printf("População: Carta %i venceu (%d)\n", 2 - winPopulacao, winPopulacao); 
+    printf("Área: Carta %i venceu (%i)\n", 2 - winArea, winArea);
+    printf("PIB: Carta %i venceu (%i)\n", 2 - winPib, winPib);
+    printf("Pontos Turísticos: Carta %i venceu (%i)\n", 2 - winPontosT, winPontosT);
+    printf("Densidade Populacional: Carta %i venceu (%i)\n", 2 - winDensidade, winDensidade);
+    printf("PIB per Capita: Carta %i venceu (%i)\n", 2 - winPibPerCapita, winPibPerCapita);
+    printf("Super Poder: Carta %i venceu (%i)\n", 2 - winSuperCarta, winSuperCarta);
+
+    /*
+    Explicação: Apliquei uma lógica para verificar se foi a carta 1 ou 2 que venceu. Ao fazer as comparações, me preocupei que
+    ao resultar em verdadeiro(1) a carta 1 vencesse e caso falso(0) a carta 2 vencesse. Fiz então uma lógica onde para mostrar
+    a carta que venceu, subtraio o valor da comparação(1 ou 0) por 2, assim, sempre que a comparação desse 1 seria exibido 2-1,
+    o que quer dizer que a carta 1 venceu, já quando a comparação desse 0 seria exibido 2-0, o que mostraria que a carta 2 venceu.
+    */
     
     return 0;
 }
